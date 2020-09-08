@@ -39,7 +39,7 @@ const MovieList = () => {
         showsHorizontalScrollIndicator={false}
         data={topRatedMovies}
         keyExtractor={(item: any) => item.id.toString()}
-        renderItem={({item}) => <MovieItem data={item} />}
+        renderItem={({item}) => <MovieItem data={item} type="top_rated" />}
       />
       <Text style={styles.sectionTitle}>Popular movies</Text>
       <FlatList
@@ -47,7 +47,7 @@ const MovieList = () => {
         showsHorizontalScrollIndicator={false}
         data={popularMovies}
         keyExtractor={(item: any) => item.id.toString()}
-        renderItem={({item}) => <MovieItem data={item} />}
+        renderItem={({item}) => <MovieItem data={item} type="popular" />}
       />
       <Text style={styles.sectionTitle}>Now in theatres</Text>
       <FlatList
@@ -55,7 +55,7 @@ const MovieList = () => {
         showsHorizontalScrollIndicator={false}
         data={nowPlayingMovies}
         keyExtractor={(item: any) => item.id.toString()}
-        renderItem={({item}) => <MovieItem data={item} />}
+        renderItem={({item}) => <MovieItem data={item} type="in_theatres" />}
       />
     </ScrollView>
   )

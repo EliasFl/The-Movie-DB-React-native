@@ -6,20 +6,21 @@ import { useNavigation } from "@react-navigation/native"
 import { SharedElement } from 'react-navigation-shared-element';
 
 interface Props {
-  data: any
+  data: any,
+  type: "top_rated" | "popular" | "in_theatres"
 }
 
-const MovieItem: React.FC<Props> = ({ data }) => {
+const MovieItem: React.FC<Props> = ({ data, type }) => {
   const navigation = useNavigation()
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => navigation.navigate('movieDetail', {movieId: data.id})}>
-        <SharedElement id={`item.${data.id}.photo`}>
+      <TouchableOpacity onPress={() => navigation.navigate('movieDetail', {movieId: data.id, type})}>
+        <SharedElement id={`item.${data.id}.photo.${type}`}>
           <Image
             resizeMethod="scale"
             resizeMode="cover"
-            source={{uri: `https://image.tmdb.org/t/p/w500${data.poster_path}`}} 
+            source={{uri: `https://image.tmdb.org/t/p/w500${data.poster_path}`}}
             style={styles.image}
             PlaceholderContent={<ActivityIndicator />}
           />

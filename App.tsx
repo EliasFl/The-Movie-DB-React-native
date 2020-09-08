@@ -29,8 +29,8 @@ function App() {
             headerStatusBarHeight: 30
           }}
           sharedElements={(route, otherRoute, showing) => {
-            const { movieId } = route.params;
-            return [`item.${movieId}.photo`]
+            const { movieId, type } = route.params;
+            return [`item.${movieId}.photo.${type}`]
           }}
         />
       </Stack.Navigator>

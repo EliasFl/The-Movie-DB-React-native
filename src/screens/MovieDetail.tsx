@@ -8,7 +8,7 @@ import TimeLapse from '../components/TimeLapse';
 import { SharedElement } from 'react-navigation-shared-element';
 
 const MovieDetail = ({ route }: { route: any }) => {
-  const movieId: number = route.params.movieId
+  const { movieId, type } = route.params
   const [movieDetail, setMovieDetail] = useState({})
 
   useEffect(() => {
@@ -26,7 +26,7 @@ const MovieDetail = ({ route }: { route: any }) => {
         style={{ ...styles.backdropImage }}
         source={{ uri: `https://image.tmdb.org/t/p/original/${movieDetail.backdrop_path}` }}>
         <View style={styles.overlay}>
-          <SharedElement id={`item.${movieId}.photo`}>
+          <SharedElement id={`item.${movieId}.photo.${type}`}>
             <Image
               resizeMethod="scale"
               resizeMode="cover"
