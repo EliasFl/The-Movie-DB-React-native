@@ -9,6 +9,7 @@ const MovieList = () => {
   const [topRatedMovies, setTopRatedMovies] = useState([])
   const [popularMovies, setPopularMovies] = useState([])
   const [nowPlayingMovies, setNowPlayingMovies] = useState([])
+  const [search, setSearch] = useState("")
 
   useEffect(() => {
     fetchTopRatedMovies()
@@ -33,7 +34,7 @@ const MovieList = () => {
 
   return (
     <ScrollView>
-      <Text style={styles.sectionTitle}>Top Rated</Text>
+      <Text style={styles.sectionTitle} h4>Top Rated</Text>
       <FlatList
         horizontal
         showsHorizontalScrollIndicator={false}
@@ -41,7 +42,7 @@ const MovieList = () => {
         keyExtractor={(item: any) => item.id.toString()}
         renderItem={({item}) => <MovieItem data={item} type="top_rated" />}
       />
-      <Text style={styles.sectionTitle}>Popular movies</Text>
+      <Text style={styles.sectionTitle} h4>Popular movies</Text>
       <FlatList
         horizontal
         showsHorizontalScrollIndicator={false}
@@ -49,7 +50,7 @@ const MovieList = () => {
         keyExtractor={(item: any) => item.id.toString()}
         renderItem={({item}) => <MovieItem data={item} type="popular" />}
       />
-      <Text style={styles.sectionTitle}>Now in theatres</Text>
+      <Text style={styles.sectionTitle} h4>Now in theatres</Text>
       <FlatList
         horizontal
         showsHorizontalScrollIndicator={false}
@@ -63,7 +64,6 @@ const MovieList = () => {
 
 const styles = StyleSheet.create({
   sectionTitle: {
-    textTransform: "uppercase",
     fontWeight: "600",
     fontSize: 20,
     marginLeft: 8,

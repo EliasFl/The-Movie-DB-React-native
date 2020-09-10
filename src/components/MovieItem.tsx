@@ -2,12 +2,12 @@ import React, { memo } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native'
 import { Image } from "react-native-elements"
 import Rating from './Rating';
-import { useNavigation } from "@react-navigation/native"
+import { useNavigation, StackActions } from "@react-navigation/native"
 import { SharedElement } from 'react-navigation-shared-element';
 
 interface Props {
   data: any,
-  type: "top_rated" | "popular" | "in_theatres"
+  type?: "top_rated" | "popular" | "in_theatres" | "default" | "similar"
 }
 
 const MovieItem: React.FC<Props> = ({ data, type }) => {
@@ -15,16 +15,19 @@ const MovieItem: React.FC<Props> = ({ data, type }) => {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => navigation.navigate('movieDetail', {movieId: data.id, type})}>
-        <SharedElement id={`item.${data.id}.photo.${type}`}>
+      <TouchableOpacity onPress={() => {
+        const pushAction = StackActions.push('movieDetail', {movieId: data.id, type})
+        navigation.dispatch(pushAction)
+      }}>
+        {/* <SharedElement id={`item.${data.id}.photo.${type}`}> */}
           <Image
             resizeMethod="scale"
             resizeMode="cover"
             source={{uri: `https://image.tmdb.org/t/p/w500${data.poster_path}`}}
             style={styles.image}
             PlaceholderContent={<ActivityIndicator />}
-          />
-        </SharedElement>
+          /> 
+        {/* </SharedElement> */}
         <Text style={styles.title}>{ data.title }</Text>
         <Rating rating={data.vote_average} />
       </TouchableOpacity>

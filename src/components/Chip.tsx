@@ -5,7 +5,7 @@ interface Props {
   title: string
 }
 
-const Chip: React.FC<Props> = ({ title }) => {
+const Chip: React.FC<Props> = ({ title }) => { 
   return (
     <View style={styles.chip}>
       <Text>

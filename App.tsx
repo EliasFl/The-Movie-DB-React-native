@@ -1,6 +1,5 @@
 import React from 'react';
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
 import MovieDetail from './src/screens/MovieDetail';
 import MovieList from './src/screens/MovieList';
 import { createSharedElementStackNavigator } from "react-navigation-shared-element";
@@ -17,7 +16,7 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="moviesList" component={MovieList} />
+        <Stack.Screen name="moviesList" component={MovieList} options={{title: "MovieTime"}}/>
         <Stack.Screen 
           name="movieDetail" 
           component={MovieDetail} 
