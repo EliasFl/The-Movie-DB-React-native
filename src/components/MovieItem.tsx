@@ -4,6 +4,7 @@ import { Image } from "react-native-elements"
 import Rating from './Rating';
 import { useNavigation, StackActions } from "@react-navigation/native"
 import { SharedElement } from 'react-navigation-shared-element';
+import FastImage from 'react-native-fast-image'
 
 interface Props {
   data: any,
@@ -20,12 +21,10 @@ const MovieItem: React.FC<Props> = ({ data, type }) => {
         navigation.dispatch(pushAction)
       }}>
         {/* <SharedElement id={`item.${data.id}.photo.${type}`}> */}
-          <Image
-            resizeMethod="scale"
-            resizeMode="cover"
+          <FastImage
+            resizeMode={FastImage.resizeMode.contain}
             source={{uri: `https://image.tmdb.org/t/p/w500${data.poster_path}`}}
             style={styles.image}
-            PlaceholderContent={<ActivityIndicator />}
           /> 
         {/* </SharedElement> */}
         <Text style={styles.title}>{ data.title }</Text>

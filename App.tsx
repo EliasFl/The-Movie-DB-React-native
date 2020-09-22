@@ -17,7 +17,7 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="moviesList" component={MovieList} options={{title: "MovieTime"}}/>
-        <Stack.Screen 
+        <Stack.Screen
           name="movieDetail" 
           component={MovieDetail} 
           options={{

@@ -25,7 +25,7 @@ const TimeLapse: React.FC<Props> = ({ runtime, clockSize = 19, textStyle, clockC
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row', 
+    flexDirection: 'row',
     marginLeft: 16
   },
   text: {
